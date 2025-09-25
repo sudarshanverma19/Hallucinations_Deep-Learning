@@ -1,0 +1,17 @@
+# Core API dependencies
+fastapi==0.117.1
+uvicorn[standard]==0.37.0
+python-multipart==0.0.6
+
+# Machine Learning
+tensorflow==2.20.0
+numpy>=1.26.0
+
+# Image processing
+Pillow==10.1.0
+
+# Templating
+Jinja2==3.1.2
+
+# Production dependencies
+gunicorn==21.2.0

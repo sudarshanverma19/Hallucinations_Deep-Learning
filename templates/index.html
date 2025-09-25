@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepDream Image Generator</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-magic"></i> DeepDream Image Generator</h1>
+            <p>Upload an image and watch AI create psychedelic, dream-like transformations!</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Choose an image to transform</h3>
+                        <p>Drag and drop your image here, or click to browse</p>
+                        <input type="file" id="imageInput" accept="image/*" hidden>
+                        <button class="browse-btn" onclick="document.getElementById('imageInput').click()">
+                            <i class="fas fa-folder-open"></i> Browse Files
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Preview and Generation Section -->
+            <div class="generation-section" id="generationSection" style="display: none;">
+                <div class="image-container">
+                    <!-- Original Image -->
+                    <div class="image-card">
+                        <h3><i class="fas fa-image"></i> Original Image</h3>
+                        <div class="image-wrapper">
+                            <img id="originalImage" src="" alt="Original Image">
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="arrow-container">
+                        <i class="fas fa-arrow-right transform-arrow"></i>
+                    </div>
+
+                    <!-- Generated Image -->
+                    <div class="image-card">
+                        <h3><i class="fas fa-wand-magic-sparkles"></i> Generated Image</h3>
+                        <div class="image-wrapper">
+                            <div id="loadingSpinner" class="loading-spinner">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Generating your image...</p>
+                            </div>
+                            <img id="generatedImage" src="" alt="Generated Image" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Model Selection -->
+                <div class="model-selection">
+                    <div class="model-selector-card">
+                        <h3><i class="fas fa-brain"></i> Choose AI Model</h3>
+                        <div class="model-dropdown">
+                            <select id="modelSelect" class="model-select">
+                                <option value="inception" selected>Model 1 (Abstract & Complex)</option>
+                                <option value="vgg16">Model 2 (Geometric & Structured)</option>
+                            </select>
+                        </div>
+                        <p class="model-description">
+                            <span id="modelDescription">Creates complex, abstract dream patterns with intricate details</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="generateBtn">
+                        <i class="fas fa-play"></i> Generate Image
+                    </button>
+                    <button class="btn btn-secondary" id="downloadBtn" style="display: none;">
+                        <i class="fas fa-download"></i> Download Result
+                    </button>
+                    <button class="btn btn-outline" id="newImageBtn">
+                        <i class="fas fa-plus"></i> Try Another Image
+                    </button>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <div class="info-card">
+                    <h3><i class="fas fa-info-circle"></i> How it works</h3>
+                    <ol>
+                        <li>Upload any image (JPG, PNG, etc.)</li>
+                        <li>Click "Generate Image" to transform it</li>
+                        <li>Download your AI-generated result</li>
+                    </ol>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 CIFAR-10 Image Generator. Powered by SUDARSHAN VERMA.</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

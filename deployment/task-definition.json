@@ -1,0 +1,50 @@
+{
+    "family": "cifar10-deepdream-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "1024",
+    "memory": "3072",
+    "executionRoleArn": "arn:aws:iam::YOUR_ACCOUNT_ID:role/ecsTaskExecutionRole",
+    "taskRoleArn": "arn:aws:iam::YOUR_ACCOUNT_ID:role/ecsTaskRole",
+    "containerDefinitions": [
+        {
+            "name": "cifar10-deepdream",
+            "image": "YOUR_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/cifar10-deepdream:latest",
+            "portMappings": [
+                {
+                    "containerPort": 8000,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "ENVIRONMENT",
+                    "value": "production"
+                },
+                {
+                    "name": "LOG_LEVEL",
+                    "value": "info"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/cifar10-deepdream",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "healthCheck": {
+                "command": [
+                    "CMD-SHELL",
+                    "curl -f http://localhost:8000/health || exit 1"
+                ],
+                "interval": 30,
+                "timeout": 5,
+                "retries": 3,
+                "startPeriod": 60
+            }
+        }
+    ]
+}
